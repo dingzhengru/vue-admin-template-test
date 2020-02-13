@@ -14,3 +14,24 @@
         *  user1  : 
         *  user2  : 
     *  由後端取得登入角色的權限列表，在登入的api，傳給前端
+
+
+## 登入規則
+*  實現登錄和權限驗證的思路: https://juejin.im/post/591aa14f570c35006961acac#heading-0
+*  預設 username 放在 utils/validate.js (admin, editor)
+*  預設會把 登入資料 傳到 api/user.js 中的網址('/vue-admin-template/user/login')
+*  登入資料正確，會回傳 token { code: 20000, data: {token: "admin-token"}} 或是 { code: 20000, data: {token: "editor-token"}}
+*  登入成功會使用 getInfo 取使用者資料
+```
+// admin 用 getInfo 取到的資料
+{
+    code: 20000
+    data: {
+        roles: ["admin"]
+        introduction: "I am a super administrator",
+        avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+        name: "Super Admin"
+    }
+}
+```
+
