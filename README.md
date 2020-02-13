@@ -34,4 +34,6 @@
     }
 }
 ```
-
+## 權限
+*  router/index.js 中可以對每個路徑設置權限 meta.roles ['admin','editor'] 
+*  目前猜想: roles 的權限內容，是可以自己填入，只要對應到 getInfo 的使用者資料的 roles 即可
