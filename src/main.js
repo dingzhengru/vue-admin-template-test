@@ -35,6 +35,19 @@ Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
 
+
+// 進入路徑前，利用 meta.roles 來限制
+router.beforeEach((to, from, next) => {
+  to.matched.some(record => {
+    console.log('record.meta.title', record.meta.title)
+    console.log('record.meta.roles', record.meta.roles)
+    console.log('store.state.user.roles', store.state.user.roles)
+
+  })
+  next()
+})
+
+
 new Vue({
   el: '#app',
   router,

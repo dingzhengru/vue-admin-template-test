@@ -41,41 +41,22 @@ export function getInfo(token, username) {
 
   const data = {token: token, username: username }
 
-  axios.post('http://localhost:3000/api/auth/user/info', data)
-  .then(result => {
-    console.log('custom getInfo', result)
-  })
-
-
-  request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  }).then(result => {
-    console.log('getInfo', result)
-  })
-
-  return axios.post('http://localhost:3000/api/auth/user/info', data)
   // axios.post('http://localhost:3000/api/auth/user/info', data)
   // .then(result => {
   //   console.log('custom getInfo', result)
   // })
 
-  return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  })
+
+  return axios.post('http://localhost:3000/api/auth/user/info', data)
+
+  // return request({
+  //   url: '/vue-admin-template/user/info',
+  //   method: 'get',
+  //   params: { token }
+  // })
 }
 
 export function logout() {
-  // request({
-  //   url: '/vue-admin-template/user/logout',
-  //   method: 'post'
-  // }).then(result => {
-  //   console.log('logout', result)
-  //   console.log(result)
-  // })
   return request({
     url: '/vue-admin-template/user/logout',
     method: 'post'

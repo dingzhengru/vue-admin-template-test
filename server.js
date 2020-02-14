@@ -84,7 +84,7 @@ app.post('/api/auth/user/info', function (req, res) {
         data = snapshot.docs.map(doc => doc.data())[0]
 
         delete data['password']
-        delete data['username']
+        // delete data['username']
 
         console.log('user data', data)
 

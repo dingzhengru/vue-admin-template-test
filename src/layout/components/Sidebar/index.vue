@@ -12,7 +12,11 @@
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item 
+        v-for="route in routes" 
+        :key="route.path" 
+        :item="route" 
+        :base-path="route.path"/>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -28,10 +32,25 @@ export default {
   components: { SidebarItem, Logo },
   computed: {
     ...mapGetters([
-      'sidebar'
+      'sidebar',
+      'roles'
     ]),
     routes() {
-      return this.$router.options.routes
+      let newRoutes = []
+      console.log(this.$router.options.routes[3].meta.roles)
+      for(let i in this.$router.options.routes) {
+        try {
+          let pageRoles = this.$router.options.routes[i].meta.roles
+          if(this.checkRoles(pageRoles, this.roles)) {
+            newRoutes.push(this.$router.options.routes[i])
+          }
+        } catch {
+          newRoutes.push(this.$router.options.routes[i])
+        }
+        
+      }
+      // return this.$router.options.routes
+      return newRoutes
     },
     activeMenu() {
       const route = this.$route
@@ -50,6 +69,27 @@ export default {
     },
     isCollapse() {
       return !this.sidebar.opened
+    },
+  },
+  mounted() {
+    // console.log('sidebar $route.meta.title', this.$route.meta.title)
+    // console.log('sidebar $route.meta.roles', this.$route.meta.roles)
+    // console.log(this.roles)
+    // console.log('check rules', this.checkRoles)
+  },
+  methods: {
+    // 我自己寫的 確認 roles 用的
+    checkRoles(pageRoles, roles) {
+      let result = false
+      for(let i in pageRoles) {
+        for(let j in roles) {
+          if(pageRoles[i] == roles[j]) {
+            result = true
+            break
+          }
+        }
+      }
+      return result
     }
   }
 }
