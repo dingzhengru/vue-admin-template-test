@@ -37,3 +37,36 @@
 ## 權限
 *  router/index.js 中可以對每個路徑設置權限 meta.roles ['admin','editor'] 
 *  目前猜想: roles 的權限內容，是可以自己填入，只要對應到 getInfo 的使用者資料的 roles 即可
+
+
+## firebase
+
+目前使用的 users object
+```
+[
+    {
+        avatar: 'https://cdn3.iconfinder.com/data/icons/shipping-and-delivery-2-1/512/54-512.png',
+        email: 'asdf1234',
+        introduction: 'custom editor1',
+        name: 'user1',
+        password: 'asdf1234',
+        roles: ['editor']
+    },
+    {
+        avatar: 'https://cdn2.iconfinder.com/data/icons/mobile-banking-ver-1a/100/1-11-512.png',
+        email: 'zxcv1234',
+        introduction: 'custom admin',
+        name: 'admin',
+        password: 'zxcv1234',
+        roles: ['admin']
+    },
+    {
+        avatar: 'https://cdn3.iconfinder.com/data/icons/shipping-and-delivery-2-1/512/54-512.png',
+        email: 'qwer1234',
+        introduction: 'custom editor2',
+        name: 'user2',
+        password: 'qwer1234',
+        roles: ['editor']
+    }
+]
+```
